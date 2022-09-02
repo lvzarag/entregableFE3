@@ -1,3 +1,8 @@
+import React, { useState } from "react";
+import Cabecera from "./components/Cabecera";
+import Listado from "./components/Listado";
+
+
 // El componente App es el padre de:
 // - Cabecera
 // - Listado
@@ -7,12 +12,20 @@
 
 function App() {
 
+
+  const [countCarrito, setCountCarrito] = useState(0)
+
+  const addProducto = () => {
+    setCountCarrito (countCarrito + 1)
+  }
+
   return (
     <div className="App">
-      <Cabecera />
-      <Listado />
+      <Cabecera items={countCarrito} />
+      <Listado addProducto={addProducto}/>
     </div>
   );
 }
+
 
 export default App;
